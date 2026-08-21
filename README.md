@@ -90,6 +90,20 @@ Streamlit Dashboard
 * Perform initial data exploration.
 * Implement data quality checks.
 * Standardize dates, sales, and pricing information.
+* ## Week 1 Progress
+
+### Day 1–3: BigQuery Setup
+- Created Google Cloud project for the Retail Forecasting project
+- Enabled BigQuery
+- Created the BigQuery dataset
+- Prepared tables for the M5 dataset
+- Loaded raw M5 data into BigQuery
+
+### Day 4–7: Data Quality & Cleaning
+- Added data quality checks
+- Validated dates and sales volumes
+- Checked sell price data
+- Implemented data cleaning using SQL/Python
 
 ### Week 2 – Data Transformation with dbt
 
