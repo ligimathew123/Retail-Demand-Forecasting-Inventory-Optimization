@@ -1,0 +1,22 @@
+-- Date Format and Quality Validation
+-- M5 Retail Forecasting Project
+-- Week 1: Data Quality Checks
+
+SELECT
+  COUNT(*) AS total_rows,
+  COUNTIF(date IS NULL) AS missing_dates,
+  MIN(date) AS minimum_date,
+  MAX(date) AS maximum_date,
+  COUNT(DISTINCT date) AS unique_dates
+FROM `retail-forecasting-506113.retail_forecasting.Calendar`;
+
+
+
+
+| Check         |     Result | Status |
+| ------------- | ---------: | ------ |
+| Total rows    |      1,969 | ✅      |
+| Missing dates |          0 | ✅      |
+| Minimum date  | 2011-01-29 | ✅      |
+| Maximum date  | 2016-06-19 | ✅      |
+| Unique dates  |      1,969 | ✅      |
