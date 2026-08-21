@@ -128,6 +128,35 @@ Day 4–7
 → Price-data quality validation
 → Date formatting validation
 → Data cleaning/validation SQL
+## Week 1 – Data Architecture & ETL
+
+### Data Quality & Validation
+
+Performed data quality checks in Google BigQuery on the M5 Retail Forecasting dataset.
+
+#### Sales Data
+- Total rows: 30,490
+- Missing sales values checked: 0
+- Negative sales values checked: 0
+- Sales range: 0–117
+- Average sales: 1.7822
+
+#### Price Data
+- Total rows: 6,841,121
+- Missing prices: 0
+- Negative prices: 0
+- Price range: 0.01–107.32
+- Average price: 4.4110
+
+#### Calendar Data
+- Total rows: 1,969
+- Missing dates: 0
+- Unique dates: 1,969
+- Date range: 2011-01-29 to 2016-06-19
+
+### Validation Result
+
+All major data quality checks passed successfully. No missing or negative values were identified in the validated sales and price fields, and the calendar contained complete unique dates for the available period.
 
 ### Week 2 – Data Transformation with dbt
 
