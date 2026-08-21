@@ -104,6 +104,16 @@ Streamlit Dashboard
 - Validated dates and sales volumes
 - Checked sell price data
 - Implemented data cleaning using SQL/Python
+- Week 1 – Data Quality Checks, add:
+
+Sales volume validation completed
+Total rows checked: 914,700
+Negative sales: 0
+Missing sales: 0
+Minimum sales: 0
+Maximum sales: 436
+Average sales: 0.8673
+Result: Sales-volume data passed basic quality checks
 
 ### Week 2 – Data Transformation with dbt
 
