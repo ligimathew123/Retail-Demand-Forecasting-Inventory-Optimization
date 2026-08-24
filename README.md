@@ -159,7 +159,7 @@ Performed data quality checks in Google BigQuery on the M5 Retail Forecasting da
 All major data quality checks passed successfully. No missing or negative values were identified in the validated sales and price fields, and the calendar contained complete unique dates for the available period.
 
 BigQuery → Data loading → Cleaning → Validation → SQL documentation → GitHub
-
+Assessmrnt of valuation results 
 ### Week 2 – Data Transformation with dbt
 
 * Configure dbt.
