@@ -1,0 +1,24 @@
+-- Week 3: LightGBM Demand Forecasting
+-- Purpose: Evaluate actual sales against forecast results
+
+-- 1. Compare actual sales with predicted sales
+SELECT
+    item_id,
+    store_id,
+    SUM(sales) AS actual_sales,
+    SUM(predicted_sales) AS predicted_sales,
+    SUM(sales) - SUM(predicted_sales) AS prediction_error
+FROM `retail-forecasting-506113.retail_forecasting.modeling_features`
+GROUP BY item_id, store_id
+ORDER BY actual_sales DESC;
+
+-- 2. Identify high-volume products
+SELECT
+    item_id,
+    store_id,
+    SUM(sales) AS total_sales,
+    AVG(sales) AS avg_daily_sales
+FROM `retail-forecasting-506113.retail_forecasting.modeling_features`
+GROUP BY item_id, store_id
+ORDER BY total_sales DESC
+LIMIT 20;
