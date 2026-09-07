@@ -170,11 +170,43 @@ Assessmrnt of valuation results
 
 ### Week 3 – Time-Series Forecasting
 
+
 * Analyze demand trends and seasonality.
 * Implement Prophet forecasting.
 * Develop LightGBM forecasting models.
 * Evaluate forecasting performance.
 * Store forecast results for analysis.
+* # Week 3 - Forecasting and Feature Validation
+
+## Day 1: Final Feature Table Validation
+
+Validated the final feature table before proceeding to model training.
+
+### Table Validated
+
+`retail-forecasting-506113.retail_forecasting.final_feature_table`
+
+### Validation Results
+
+| Check | Result | Status |
+|---|---:|---|
+| Total rows | 152,450 | PASS |
+| NULL sales | 0 | PASS |
+| Duplicate item-store-day records | 0 | PASS |
+| Negative sales | 0 | PASS |
+| Minimum sales | 0 | PASS |
+| Maximum sales | 436 | PASS |
+| Average sales | 0.8706 | PASS |
+| Lag 1 populated | 121,960 | PASS |
+| Lag 2 populated | 91,470 | PASS |
+| Difference 1 populated | 121,960 | PASS |
+| Rolling 3 populated | 152,450 | PASS |
+
+### Conclusion
+
+The final feature table passed the Day 1 data quality and feature coverage checks.
+
+The table is ready for preparation of training and validation datasets in Week 3 Day 2.
 
 ### Week 4 – Dashboard & Inventory Optimization
 
