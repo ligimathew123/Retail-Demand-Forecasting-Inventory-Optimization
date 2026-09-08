@@ -21,7 +21,9 @@ sales_long AS (
     FROM sales_wide
     UNPIVOT (
         sales FOR d IN (
-            d_1, d_2, d_3, d_4, d_5
+            {% for i in range(1, 1942) %}
+                d_{{ i }}{% if not loop.last %},{% endif %}
+            {% endfor %}
         )
     )
 
