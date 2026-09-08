@@ -203,6 +203,10 @@ Validated the final feature table before proceeding to model training.
 | Rolling 3 populated | 152,450 | PASS |
 
 ### Conclusion
+LightGBM MAE: 12.16
+LightGBM RMSE: 15.37
+Forecast rows stored in BigQuery: 140
+Validation period: 28 days
 
 The final feature table passed the Day 1 data quality and feature coverage checks.
 
