@@ -686,14 +686,26 @@ The project covers multiple areas including:
 * ✅ LightGBM model evaluation
 * ✅ Model artifact generation
 
-### In Progress
-
-* 🔄 Model comparison
-* 🔄 Extended forecast generation
-* 🔄 Inventory optimization
-* 🔄 Streamlit dashboard refinement
-* 🔄 What-if scenario analysis
-* 🔄 Final documentation and project handover
+Project Status
+Completed:
+ Dataset exploration
+ Data cleaning
+ BigQuery setup
+ SQL transformation
+ Data validation
+ Feature engineering
+ Time-series analysis
+ Prophet analysis
+ LightGBM model development
+ Model evaluation
+ Negative prediction handling
+ Demand forecast generation
+ Inventory optimization analysis
+ Store-level analysis
+ Streamlit dashboard
+ What-if scenario
+ Final documentation
+ Project handover
 
 ---
 
@@ -715,8 +727,71 @@ This project provides practical experience in:
 * Inventory optimization
 * Dashboard development
 
----
+---The project starts with raw M5 retail data and progresses through:
+Data Collection
+      ↓
+Data Cleaning
+      ↓
+BigQuery
+      ↓
+Feature Engineering
+      ↓
+Time-Series Analysis
+      ↓
+Machine Learning
+      ↓
+Demand Forecasting
+      ↓
+Inventory Optimization
+      ↓
+Dashboard
+      ↓
+Business Insights
+MAE  = 0.04131
+RMSE = 0.86011
 
+Final Model Summary:
+
+| Component            | Result                          |
+| -------------------- | ------------------------------- |
+| Dataset              | M5 Retail Sales Dataset         |
+| Cloud Database       | Google BigQuery                 |
+| BigQuery Project     | `retail-forecasting-506113`     |
+| BigQuery Dataset     | `retail_forecasting`            |
+| Main Feature Table   | `final_feature_table`           |
+| Feature Table Size   | 152,450 rows × 16 columns       |
+| Main ML Model        | LightGBM                        |
+| Forecasting Analysis | Prophet + LightGBM              |
+| Final MAE            | 0.04131                         |
+| Final RMSE           | 0.86011                         |
+| Forecast Output      | Product / Store / Date / Demand |
+| Inventory Analysis   | Included                        |
+| Dashboard            | Streamlit                       |
+| What-If Analysis     | Included as business scenario   |
+
+💼 Business Value
+
+This project demonstrates how data analytics and machine learning can support retail decision-making.
+
+Better Inventory Planning
+
+Demand forecasts can help estimate future inventory requirements.
+
+Reduced Stockouts
+
+High-demand products can be identified earlier so that businesses can prepare sufficient inventory.
+
+Reduced Overstock
+
+Products with lower expected demand can be monitored to reduce unnecessary inventory accumulation.
+
+Store-Level Planning
+
+Demand can be analyzed at product and store level to support more targeted inventory decisions.
+
+Data-Driven Decisions
+
+Forecasting provides quantitative information that can support business decisions instead of relying only on manual estimates.
 # 📄 License
 
 This project is developed for **educational and internship purposes**.
@@ -729,3 +804,6 @@ The M5 Forecasting dataset belongs to its respective data provider and is not re
 
 **GitHub:**
 `https://github.com/ligimathew123/Retail-Demand-Forecasting-Inventory-Optimization`
+
+Team Members :Ligi Mathew
+               Ashritha Buddi
