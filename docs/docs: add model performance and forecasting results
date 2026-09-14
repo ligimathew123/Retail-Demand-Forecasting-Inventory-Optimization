@@ -1,0 +1,25 @@
+## Model Performance
+
+The project uses forecasting models to predict item-level and store-level demand.
+
+### LightGBM Results
+
+The LightGBM model was evaluated using Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE).
+
+| Metric | Result |
+|---|---:|
+| MAE | 0.0413 |
+| RMSE | 0.8601 |
+
+The model generates forecasts at the item and store level and can support inventory planning and replenishment decisions.
+
+### Forecast Output
+
+The final forecast output contains:
+
+- `item_id` – Product identifier
+- `store_id` – Store identifier
+- `ds` – Forecast date/day
+- `y` – Actual/forecast demand value
+
+This output can be used to compare predicted demand with actual sales and identify products that may require inventory attention.
