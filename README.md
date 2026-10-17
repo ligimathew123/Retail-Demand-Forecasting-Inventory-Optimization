@@ -60,12 +60,18 @@ The documented validation checks include:
 
 ## Model Evaluation
 
-The repository documents the following LightGBM validation results:
+The LightGBM forecasting model was evaluated using Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE).
 
-| Metric | Reported result |
+| Metric | Result |
 |---|---:|
-| MAE | 0.0413 |
-| RMSE | 0.8601 |
+| MAE | 12.16 |
+| RMSE | 15.37 |
+
+- **MAE (12.16):** The model's predictions differed from actual sales by an average absolute amount of approximately 12.16 units, assuming the target variable represents sales units.
+- **RMSE (15.37):** This metric penalises larger prediction errors more heavily than MAE.
+
+These metrics help assess the accuracy of the demand forecasting model on the test dataset.
+
 
 These values should be interpreted in the context of the target variable and its scale. The final notebook should be used as the source of truth for the reported metrics.
 
