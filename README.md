@@ -1,809 +1,127 @@
 # Retail Demand Forecasting & Inventory Optimization
 
-A data analytics and machine learning project for forecasting retail demand and supporting inventory planning using the **M5 Walmart retail sales dataset**.
+## Project Overview
 
-The project combines **Python, SQL, Google BigQuery, dbt, Prophet, LightGBM, and Streamlit** to build an end-to-end retail forecasting and inventory optimization workflow.
+This project uses historical Walmart retail sales data from the M5 Forecasting dataset to analyse sales patterns, forecast product demand, and support inventory planning decisions.
 
----
+The objective is to demonstrate how data analytics, SQL, cloud data warehousing, and machine learning can help retailers make data-driven decisions.
 
-## 📌 Project Overview
+## Business Problem
 
-Retail businesses need accurate demand forecasts to maintain the right inventory levels.
+Retailers need to estimate future product demand to maintain appropriate inventory levels.
 
-If demand is underestimated, businesses may face:
+- Underestimating demand can lead to stockouts and lost sales.
+- Overestimating demand can result in excess inventory and higher storage costs.
 
-* Stockouts
-* Lost sales
-* Poor customer satisfaction
-* Emergency replenishment
+This project explores demand forecasting as a way to support better inventory planning.
 
-If demand is overestimated, businesses may face:
+## Tools and Technologies
 
-* Overstocking
-* Higher storage costs
-* Excess working capital
-* Inventory waste
+- **Python:** Pandas, NumPy, Scikit-learn
+- **SQL:** Data validation and transformation
+- **Google BigQuery:** Data storage and analytical queries
+- **dbt:** Data transformation and modelling
+- **LightGBM:** Demand forecasting
+- **Prophet:** Time-series forecasting exploration
+- **Streamlit:** Interactive dashboard prototype
+- **Git and GitHub:** Version control and documentation
+- **Google Colab:** Notebook-based development
 
-This project aims to transform historical retail sales data into **forecast-driven inventory planning insights**.
+## Dataset
 
-The workflow covers:
+The project uses the M5 Walmart retail sales dataset, which contains information about:
 
-**Raw Data → Data Validation → SQL/dbt Transformation → Feature Engineering → Forecasting → Model Evaluation → Inventory Optimization → Interactive Dashboard**
+- Historical daily product sales
+- Stores, departments and product categories
+- Calendar dates and events
+- Product prices
 
----
+The original dataset is not included in this repository because of its size.
 
-## 🎯 Project Objectives
+## Project Workflow
 
-The main objectives of this project are to:
+1. Load retail sales, price and calendar data into BigQuery.
+2. Validate data quality and check for missing or invalid values.
+3. Transform data using SQL and dbt.
+4. Create features such as lagged sales, rolling averages and calendar variables.
+5. Explore time-series forecasting and develop a LightGBM forecasting model.
+6. Evaluate model performance using MAE and RMSE.
+7. Generate product/store-level demand forecasts.
+8. Explore inventory planning indicators and visualise results through a Streamlit dashboard prototype.
 
-* Analyze historical retail sales data
-* Validate and clean retail datasets
-* Identify demand trends and seasonal patterns
-* Build analytical tables using SQL and dbt
-* Engineer time-series forecasting features
-* Develop demand forecasting models
-* Compare forecasting model performance
-* Generate future demand forecasts
-* Support inventory planning and replenishment decisions
-* Build an interactive Streamlit dashboard
-* Provide what-if analysis for business decision-making
+## Data Quality and Feature Engineering
 
----
+The documented validation checks include:
 
-# 📊 Dataset
+- Sales, price and calendar data quality checks.
+- Missing and negative value checks.
+- A validated analytical feature table containing **152,450 rows and 16 columns**.
+- Lag, difference, rolling and calendar features to capture historical demand patterns.
 
-## M5 Forecasting Dataset
+## Model Evaluation
 
-The project uses the **M5 Forecasting dataset**, based on Walmart retail sales.
+The repository documents the following LightGBM validation results:
 
-The dataset contains hierarchical information covering:
-
-* Stores
-* States
-* Departments
-* Categories
-* Products/items
-* Daily sales
-* Calendar information
-* Events and holidays
-* Product prices
-
-The original dataset is not stored directly in this repository because of its large size.
-
-### Main M5 datasets
-
-| Dataset                  | Purpose                               |
-| ------------------------ | ------------------------------------- |
-| `sales_train_evaluation` | Historical daily product-level sales  |
-| `sell_prices`            | Product price information             |
-| `calendar`               | Dates, events and calendar attributes |
-
----
-
-# 🛠️ Technology Stack
-
-| Area                    | Technology             |
-| ----------------------- | ---------------------- |
-| Programming             | Python                 |
-| Data Analysis           | Pandas, NumPy          |
-| Visualization           | Matplotlib             |
-| Machine Learning        | LightGBM, Scikit-learn |
-| Time-Series Forecasting | Prophet                |
-| Data Warehouse          | Google BigQuery        |
-| Query Language          | SQL                    |
-| Data Transformation     | dbt                    |
-| Dashboard               | Streamlit              |
-| Version Control         | Git & GitHub           |
-| Notebook Environment    | Google Colab           |
-
----
-
-# ☁️ Data Warehouse
-
-The project uses **Google BigQuery** as the analytical data warehouse.
-
-### BigQuery Project
-
-```text
-retail-forecasting-506113
-```
-
-### Dataset
-
-```text
-retail_forecasting
-```
-
-### Important analytical tables
-
-```text
-Calendar
-sales_train_evaluation
-sell_prices
-stg_sales
-sales_cleaned
-sales_features
-sales_calendar_features
-sales_price_features
-modeling_features
-final_feature_table
-prophet_training_data
-prophet_training_data_ready
-lightgbm_training_data
-lightgbm_forecasts
-inventory_optimization
-```
-
----
-
-# 🔄 Project Workflow
-
-```text
-                    M5 Walmart Dataset
-                           │
-                           ▼
-                 Data Extraction & Loading
-                           │
-                           ▼
-                  Google BigQuery
-                           │
-                           ▼
-                 Data Quality Validation
-                           │
-                           ▼
-                    SQL Transformations
-                           │
-                           ▼
-                       dbt Models
-                           │
-                           ▼
-                   Feature Engineering
-                           │
-              ┌────────────┴────────────┐
-              ▼                         ▼
-          Prophet                    LightGBM
-              │                         │
-              └────────────┬────────────┘
-                           ▼
-                   Model Evaluation
-                           │
-                           ▼
-                  Demand Forecasting
-                           │
-                           ▼
-                 Inventory Optimization
-                           │
-                           ▼
-                  Streamlit Dashboard
-                           │
-                           ▼
-                 Business Insights
-```
-
----
-
-# 🗓️ Development Progress
-
-## Week 1 — Data Architecture & ETL
-
-### Completed
-
-* Google Cloud project setup
-* BigQuery enabled
-* BigQuery dataset created
-* M5 data loaded into BigQuery
-* Raw tables created
-* Sales data validation
-* Price data validation
-* Calendar validation
-* Data cleaning and quality checks
-* SQL validation queries
-
-### Data Quality Results
-
-#### Sales Data
-
-| Check          |  Result |
-| -------------- | ------: |
-| Rows validated | 914,700 |
-| Missing sales  |       0 |
-| Negative sales |       0 |
-| Minimum sales  |       0 |
-| Maximum sales  |     436 |
-| Average sales  |  0.8673 |
-
-#### Price Data
-
-| Check           |    Result |
-| --------------- | --------: |
-| Rows            | 6,841,121 |
-| Missing prices  |         0 |
-| Negative prices |         0 |
-| Minimum price   |      0.01 |
-| Maximum price   |    107.32 |
-| Average price   |    4.4110 |
-
-#### Calendar Data
-
-| Check         |                   Result |
-| ------------- | -----------------------: |
-| Rows          |                    1,969 |
-| Missing dates |                        0 |
-| Unique dates  |                    1,969 |
-| Date range    | 2011-01-29 to 2016-06-19 |
-
-### Week 1 Result
-
-The major sales, price and calendar quality checks were completed successfully.
-
----
-
-# Week 2 — Data Transformation & dbt
-
-### Completed
-
-* dbt project configuration
-* Staging model creation
-* Sales transformation
-* Feature preparation
-* Analytical table development
-* Data lineage and transformation documentation
-* Final feature table preparation
-
----
-
-# Week 3 — Demand Forecasting
-
-## Day 1 — Feature Table Validation
-
-The final analytical feature table was validated before model training.
-
-### Table
-
-```text
-retail-forecasting-506113.retail_forecasting.final_feature_table
-```
-
-### Validation Results
-
-| Check                  |  Result | Status |
-| ---------------------- | ------: | ------ |
-| Total rows             | 152,450 | ✅ PASS |
-| NULL sales             |       0 | ✅ PASS |
-| Negative sales         |       0 | ✅ PASS |
-| Minimum sales          |       0 | ✅ PASS |
-| Maximum sales          |     436 | ✅ PASS |
-| Average sales          |  0.8706 | ✅ PASS |
-| Lag 1 populated        | 121,960 | ✅ PASS |
-| Lag 2 populated        |  91,470 | ✅ PASS |
-| Difference 1 populated | 121,960 | ✅ PASS |
-| Rolling 3 populated    | 152,450 | ✅ PASS |
-
-The feature table was confirmed ready for model training and validation.
-
----
-
-# 📈 Feature Engineering
-
-The forecasting dataset contains historical and time-based features.
-
-### Main features
-
-```text
-item_id
-dept_id
-cat_id
-store_id
-state_id
-sales_lag_1
-sales_lag_2
-sales_diff_1
-sales_rolling_3
-day_number
-week_number
-month_number
-quarter_number
-is_weekend
-```
-
-### Lag Features
-
-Lag features capture previous sales observations:
-
-```text
-sales_lag_1
-sales_lag_2
-```
+| Metric | Reported result |
+|---|---:|
+| MAE | 0.0413 |
+| RMSE | 0.8601 |
 
-These features help the model understand recent demand behavior.
+These values should be interpreted in the context of the target variable and its scale. The final notebook should be used as the source of truth for the reported metrics.
 
-### Difference Feature
+A documented forecast output contains 140 rows covering two items and four stores over the period from April 25 to May 22, 2016. This is a limited forecast output, not evidence of a fully implemented 30-day forecasting system for every product and store.
 
-```text
-sales_diff_1
-```
+## Dashboard and Inventory Planning
 
-This represents the change between consecutive observations and helps capture short-term demand movement.
+The repository includes a Streamlit dashboard application intended to help users explore historical demand, forecasts, product/store selections and inventory indicators.
 
-### Rolling Feature
+The project explores how forecasts can support:
 
-```text
-sales_rolling_3
-```
+- Identifying products with higher expected demand.
+- Planning replenishment.
+- Monitoring potential stockout and overstock risks.
+- Improving inventory-related decisions.
 
-This captures recent demand patterns using a rolling three-period calculation.
+The dashboard's runtime connection to the data source should be verified before describing it as a fully deployed application.
 
-### Calendar Features
+## Key Learning Outcomes
 
-The project also uses:
+This project provided practical exposure to:
 
-* Day number
-* Week number
-* Month
-* Quarter
-* Weekend indicator
+- Retail sales data analysis.
+- Data cleaning and quality validation.
+- SQL transformations and BigQuery.
+- Feature engineering for time-series forecasting.
+- LightGBM model evaluation.
+- Forecast interpretation and inventory planning.
+- GitHub documentation and project organisation.
 
----
+## Limitations and Future Improvements
 
-# 🔮 Forecasting Models
+- Expand forecasting coverage across more products and stores.
+- Reconcile and document final model evaluation metrics.
+- Validate dashboard execution and data-source connectivity.
+- Improve inventory optimisation with clearly defined reorder-point and safety-stock calculations.
+- Add price and promotion features before attempting price-impact forecasting.
+- Explore automated forecast monitoring and deployment.
 
-## Prophet
+## Repository Structure
 
-Prophet is used for time-series forecasting and to analyze:
+- `notebooks/` — analysis and forecasting notebooks
+- `sql/` — SQL transformations and validation queries
+- `models/` — model-related files
+- `Dashboards/` — dashboard-related resources
+- `docs/` — project documentation
+- `REPORTS/` — reports
+- `app.py` — Streamlit dashboard application
+- `bigquery.ipynb` — BigQuery workflow notebook
 
-* Trend
-* Seasonality
-* Holiday effects
-* High-volume products
-* Demand patterns over time
+## Project Team
 
-Prophet is particularly useful for understanding the time-series structure of retail demand.
+Team size: 2 members.
 
----
+The repository contains work across data preparation, SQL, forecasting and dashboard development. Individual contributions should be described separately and accurately when presenting the project in interviews.
 
-## LightGBM
+## Conclusion
 
-LightGBM is used as the machine-learning forecasting model for granular demand prediction.
-
-The model uses historical demand, product/store information and time-based features.
-
-### Model Configuration
-
-```python
-LGBMRegressor(
-    objective="regression",
-    n_estimators=500,
-    learning_rate=0.05,
-    num_leaves=31,
-    max_depth=-1,
-    subsample=0.8,
-    colsample_bytree=0.8,
-    random_state=42
-)
-```
-
-### Validation Strategy
-
-The dataset is split chronologically rather than randomly.
-
-This is important because future observations should not be used to train a model that predicts the past.
-
-The validation period represents later observations in the time series.
-
----
-
-# 📊 LightGBM Model Evaluation
-
-The current LightGBM validation results are:
-
-| Metric                              | Result |
-| ----------------------------------- | -----: |
-| MAE                                 | 0.0413 |
-| RMSE                                | 0.8601 |
-| Negative predictions after clipping |      0 |
-
-Negative predictions close to zero were clipped using:
-
-```python
-y_pred_fixed = np.maximum(y_pred, 0)
-```
-
-This is appropriate for demand forecasting because sales demand cannot be negative.
-
-> **Note:** Additional model comparison and evaluation will be documented as the forecasting phase progresses.
-
----
-
-# 📅 Forecast Generation
-
-The forecasting pipeline is designed to generate future demand predictions at item/store level.
-
-A previously generated forecast output contained:
-
-| Metric         |     Result |
-| -------------- | ---------: |
-| Forecast rows  |        140 |
-| Items          |          2 |
-| Stores         |          4 |
-| Forecast start | 2016-04-25 |
-| Forecast end   | 2016-05-22 |
-
-Future iterations will expand the forecast generation to support the dashboard's 30-day demand forecasting requirement.
-
----
-
-# 📦 Inventory Optimization
-
-The forecasting output will be used to support inventory planning.
-
-The inventory optimization layer focuses on:
-
-* Expected demand
-* Forecast-based stock planning
-* Reorder requirements
-* High-demand product identification
-* Stockout risk
-* Overstock risk
-
-The goal is to move from:
-
-```text
-Historical Inventory Planning
-            ↓
-Forecast-Based Inventory Planning
-```
-
----
-
-# 🖥️ Streamlit Dashboard
-
-The project includes an interactive Streamlit dashboard for business users.
-
-The dashboard is designed to allow users to explore:
-
-* Store-level demand
-* Product/category demand
-* Historical sales
-* Forecasted demand
-* Forecast trends
-* Inventory indicators
-* Business KPIs
-
-### Planned dashboard workflow
-
-```text
-Select Store
-     ↓
-Select Category / Item
-     ↓
-View Historical Demand
-     ↓
-View 30-Day Forecast
-     ↓
-Review Inventory Indicators
-     ↓
-Business Decision
-```
-
----
-
-# 🔍 What-If Scenario Analysis
-
-A what-if analysis component is planned to support business scenario evaluation.
-
-Example:
-
-```text
-Scenario:
-10% Price Reduction
-
-        ↓
-
-Estimate potential demand impact
-
-        ↓
-
-Compare with baseline demand
-
-        ↓
-
-Evaluate inventory requirement
-
-        ↓
-
-Support pricing and inventory decisions
-```
-
-### Important modeling note
-
-The current LightGBM model is trained using demand and time-based features and **does not directly learn price elasticity**.
-
-Therefore, a price scenario should not be interpreted as a causal price-response prediction unless price is incorporated into the trained forecasting model.
-
-Future development can include a price-aware forecasting model using the available `sell_prices` data.
-
----
-
-# 📁 Repository Structure
-
-The current repository is organized around data, notebooks, SQL, models, dashboards and documentation.
-
-```text
-Retail-Demand-Forecasting-Inventory-Optimization/
-│
-├── data/
-│   └── raw/
-│
-├── notebooks/
-│   ├── bigquery.ipynb
-│   ├── lightgbm_forecasting.ipynb
-│   └── ...
-│
-├── sql/
-│   ├── ...
-│
-├── models/
-│   └── lightgbm_model.pkl
-│
-├── models/
-│   └── staging/
-│       └── stg_sales.sql
-│
-├── Dashboards/
-│   └── ...
-│
-├── docs/
-│   └── ...
-│
-├── REPORTS/
-│   └── ...
-│
-├── app.py
-├── dbt_project.yml
-├── .gitignore
-└── README.md
-```
-
-> The repository structure may continue to evolve as additional forecasting, dashboard and inventory modules are completed.
-
----
-
-# 📌 Key Project Outputs
-
-The completed solution is intended to provide:
-
-### Data Analytics
-
-* Historical sales analysis
-* Product-level demand analysis
-* Store-level demand analysis
-* Trend and seasonality analysis
-
-### Machine Learning
-
-* Demand forecasting
-* Time-aware model validation
-* LightGBM forecasting
-* Prophet forecasting
-* Model performance evaluation
-
-### Inventory Planning
-
-* Forecast-based inventory planning
-* Demand-driven replenishment insights
-* High-demand item identification
-* Stockout-risk analysis
-* Overstock-risk analysis
-
-### Business Intelligence
-
-* Interactive Streamlit dashboard
-* Forecast visualization
-* KPI reporting
-* What-if scenario analysis
-
----
-
-# 💡 Business Value
-
-The project demonstrates how retail analytics can connect:
-
-```text
-DATA
-  ↓
-FORECAST
-  ↓
-INVENTORY
-  ↓
-BUSINESS DECISION
-```
-
-The solution aims to help retail teams:
-
-* Improve demand visibility
-* Reduce stockout risk
-* Avoid unnecessary overstock
-* Improve replenishment planning
-* Identify high-demand products
-* Support data-driven procurement decisions
-* Improve operational efficiency
-
----
-
-# 🚀 Future Enhancements
-
-Future improvements may include:
-
-* Full 30-day item-level forecasting
-* Price-aware demand forecasting
-* Advanced price elasticity modeling
-* Promotion impact analysis
-* Safety-stock optimization
-* Reorder-point optimization
-* Automated model retraining
-* Forecast monitoring
-* Model drift detection
-* Real-time inventory integration
-* Automated low-stock alerts
-* Cloud deployment
-* Enterprise inventory system integration
-
----
-
-# 👥 Project Team
-
-**Team Size:** 2 Members
-
-The project covers multiple areas including:
-
-* Data engineering
-* Data validation
-* SQL transformation
-* dbt modeling
-* Feature engineering
-* Time-series forecasting
-* Machine learning
-* Inventory optimization
-* Dashboard development
-
----
-
-# 📊 Project Status
-
-**Current Status: In Development**
-
-### Completed
-
-* ✅ BigQuery setup
-* ✅ M5 dataset loading
-* ✅ Data quality validation
-* ✅ SQL transformations
-* ✅ dbt staging/transformation
-* ✅ Feature engineering
-* ✅ Final feature table validation
-* ✅ Prophet forecasting work
-* ✅ LightGBM model development
-* ✅ LightGBM model evaluation
-* ✅ Model artifact generation
-
-Project Status
-Completed:
- Dataset exploration
- Data cleaning
- BigQuery setup
- SQL transformation
- Data validation
- Feature engineering
- Time-series analysis
- Prophet analysis
- LightGBM model development
- Model evaluation
- Negative prediction handling
- Demand forecast generation
- Inventory optimization analysis
- Store-level analysis
- Streamlit dashboard
- What-if scenario
- Final documentation
- Project handover
-
----
-
-# 📚 Learning Outcomes
-
-This project provides practical experience in:
-
-* Retail analytics
-* Demand forecasting
-* Time-series analysis
-* Feature engineering
-* Machine learning
-* SQL
-* BigQuery
-* dbt
-* Git and GitHub
-* Model evaluation
-* Business analytics
-* Inventory optimization
-* Dashboard development
-
----The project starts with raw M5 retail data and progresses through:
-Data Collection
-      ↓
-Data Cleaning
-      ↓
-BigQuery
-      ↓
-Feature Engineering
-      ↓
-Time-Series Analysis
-      ↓
-Machine Learning
-      ↓
-Demand Forecasting
-      ↓
-Inventory Optimization
-      ↓
-Dashboard
-      ↓
-Business Insights
-MAE  = 0.04131
-RMSE = 0.86011
-
-Final Model Summary:
-
-| Component            | Result                          |
-| -------------------- | ------------------------------- |
-| Dataset              | M5 Retail Sales Dataset         |
-| Cloud Database       | Google BigQuery                 |
-| BigQuery Project     | `retail-forecasting-506113`     |
-| BigQuery Dataset     | `retail_forecasting`            |
-| Main Feature Table   | `final_feature_table`           |
-| Feature Table Size   | 152,450 rows × 16 columns       |
-| Main ML Model        | LightGBM                        |
-| Forecasting Analysis | Prophet + LightGBM              |
-| Final MAE            | 0.04131                         |
-| Final RMSE           | 0.86011                         |
-| Forecast Output      | Product / Store / Date / Demand |
-| Inventory Analysis   | Included                        |
-| Dashboard            | Streamlit                       |
-| What-If Analysis     | Included as business scenario   |
-
-💼 Business Value
-
-This project demonstrates how data analytics and machine learning can support retail decision-making.
-
-Better Inventory Planning
-
-Demand forecasts can help estimate future inventory requirements.
-
-Reduced Stockouts
-
-High-demand products can be identified earlier so that businesses can prepare sufficient inventory.
-
-Reduced Overstock
-
-Products with lower expected demand can be monitored to reduce unnecessary inventory accumulation.
-
-Store-Level Planning
-
-Demand can be analyzed at product and store level to support more targeted inventory decisions.
-
-Data-Driven Decisions
-
-Forecasting provides quantitative information that can support business decisions instead of relying only on manual estimates.
-# 📄 License
-
-This project is developed for **educational and internship purposes**.
-
-The M5 Forecasting dataset belongs to its respective data provider and is not redistributed through this repository.
-
----
-
-## 🔗 Project Repository
-
-**GitHub:**
-`https://github.com/ligimathew123/Retail-Demand-Forecasting-Inventory-Optimization`
-
-Team Members :Ligi Mathew
-               Ashritha Buddi
+This project demonstrates a retail analytics workflow that connects historical sales data, data transformation, demand forecasting and inventory planning. It helped develop practical skills in SQL, Python, BigQuery and forecasting analysis.
